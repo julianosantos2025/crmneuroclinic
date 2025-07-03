@@ -1,97 +1,131 @@
-# Next.js Template - Lasy AI
+# NeuroClinic CRM - Sistema para Neuropsicopedagogos
 
-Este é um template [Next.js](https://nextjs.org) otimizado para deploys sem problemas, bootstrapped com [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Plataforma completa SaaS para gestão de clínicas neuropsicopedagógicas, baseada no DSM-5 com foco em eficiência clínica.
 
-## 🚀 Melhorias para Deploy na Vercel
+## 🚀 Deploy na Vercel
 
-Este template inclui otimizações específicas para evitar erros comuns de deploy:
+### Passo 1: Preparar o Repositório
 
-### ✅ **Compatibilidade de Dependências**
+1. **Commit e push do código para o GitHub:**
+```bash
+git add .
+git commit -m "feat: sistema completo de CRM neuropsicopedagógico"
+git push origin main
+```
 
-- **Next.js 15.1.8** + **React 19** + todas as dependências atualizadas
-- **react-day-picker v9** compatível com React 19
-- **Configuração `.npmrc`** para resolver conflitos automaticamente
+### Passo 2: Deploy na Vercel
 
-### ✅ **Configurações de Build Otimizadas**
+1. **Acesse [vercel.com](https://vercel.com) e faça login**
 
-- **TypeScript configurado** para excluir Supabase functions
-- **Webpack configurado** para ignorar conflitos Deno/Node.js
-- **`.vercelignore`** para otimizar o processo de build
+2. **Clique em "New Project"**
 
-### ✅ **Componentes Atualizados**
+3. **Importe seu repositório do GitHub**
 
-- **Calendar component** compatível com react-day-picker v9
-- **UI components** do Shadcn/UI nas versões mais recentes
+4. **Configure as variáveis de ambiente:**
+   - `NEXT_PUBLIC_SUPABASE_URL`: URL do seu projeto Supabase
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Chave anônima do Supabase
 
----
+5. **Clique em "Deploy"**
 
-## 🛠️ Começando
+### Passo 3: Configurar Variáveis de Ambiente
 
-Execute o servidor de desenvolvimento:
+No painel da Vercel:
+1. Vá em **Settings** → **Environment Variables**
+2. Adicione as variáveis:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL = https://seu-projeto.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY = sua-chave-anonima-aqui
+   ```
 
+### Passo 4: Configurar Supabase
+
+1. **No Supabase Dashboard, vá em Authentication → URL Configuration**
+2. **Adicione a URL da Vercel em "Site URL":**
+   ```
+   https://seu-projeto.vercel.app
+   ```
+3. **Adicione também em "Redirect URLs":**
+   ```
+   https://seu-projeto.vercel.app/auth/callback
+   ```
+
+## 🛠️ Desenvolvimento Local
+
+### Pré-requisitos
+
+- Node.js 18+
+- npm ou pnpm
+- Conta no Supabase
+
+### Instalação
+
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/seu-usuario/neuroclinic-crm.git
+cd neuroclinic-crm
+```
+
+2. **Instale as dependências:**
+```bash
+npm install
+```
+
+3. **Configure as variáveis de ambiente:**
+```bash
+cp .env.example .env.local
+```
+
+4. **Execute o servidor de desenvolvimento:**
 ```bash
 npm run dev
-# ou
-yarn dev
-# ou
-pnpm dev
-# ou
-bun dev
 ```
 
-Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
+5. **Acesse http://localhost:3000**
 
-Você pode começar editando a página modificando `app/page.tsx`. A página atualiza automaticamente conforme você edita o arquivo.
+## 📋 Funcionalidades Implementadas
 
----
+### ✅ Módulos Funcionais
 
-## 📚 Stack Tecnológica
+- **🔐 Autenticação**: Login, registro e proteção de rotas
+- **👥 Gestão de Pacientes**: CRUD completo com busca
+- **📅 Agenda**: Sistema completo de consultas com calendário
+- **📊 Dashboard**: Estatísticas e visão geral
 
-- **Framework**: Next.js 15.1.8 com App Router
-- **React**: 19.0.0 com suporte total
-- **Styling**: Tailwind CSS + Shadcn/UI
-- **Icons**: Lucide React
-- **Forms**: React Hook Form + Zod
-- **UI Components**: Radix UI primitives
+### 🚧 Módulos em Desenvolvimento
 
----
+- **🧪 Testes Neuropsicopedagógicos**: Baseados no DSM-5
+- **📋 Prontuários**: Evolução clínica digital
+- **💰 Financeiro**: Integração com Mercado Pago
+- **🎥 Teleconsulta**: Plataforma de vídeo integrada
+- **📝 Anamnese**: Gerador inteligente por faixa etária
+- **⚙️ Configurações**: Gestão de perfil e planos
 
-## 🔧 Deploy na Vercel
+## 🏗️ Arquitetura
 
-### **Variáveis de Ambiente**
+- **Frontend**: Next.js 15 + TypeScript
+- **UI**: Shadcn/UI + Tailwind CSS
+- **Backend**: Supabase (PostgreSQL + Auth)
+- **Deploy**: Vercel
+- **Autenticação**: Supabase Auth
+- **Banco de Dados**: PostgreSQL com RLS
 
-Se você estiver usando Supabase, configure estas variáveis na Vercel:
+## 📱 Planos SaaS
 
-```bash
-NEXT_PUBLIC_SUPABASE_URL=sua_url_do_supabase
-NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_chave_anonima
-```
+- **Básico**: 1 profissional
+- **Intermediário**: Até 3 usuários
+- **Ouro**: Equipe completa (até 10 usuários + recursos avançados)
 
-### **Deploy Automático**
+## 🔒 Segurança
 
-1. Conecte seu repositório GitHub à Vercel
-2. A Vercel detectará automaticamente Next.js
-3. O build será executado sem erros graças às otimizações
+- Row Level Security (RLS) no Supabase
+- Autenticação JWT
+- Isolamento de dados por usuário
+- Validação de formulários com Zod
 
----
+## 📞 Suporte
 
-## 📖 Saiba Mais
-
-Para aprender mais sobre Next.js, confira estes recursos:
-
-- [Documentação Next.js](https://nextjs.org/docs) - aprenda sobre recursos e API do Next.js
-- [Learn Next.js](https://nextjs.org/learn) - tutorial interativo do Next.js
-
-Você pode conferir [o repositório GitHub do Next.js](https://github.com/vercel/next.js) - seu feedback e contribuições são bem-vindos!
-
----
-
-## 🎯 Deploy Otimizado
-
-A maneira mais fácil de deployar seu app Next.js é usar a [Plataforma Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) dos criadores do Next.js.
-
-Confira nossa [documentação de deployment do Next.js](https://nextjs.org/docs/app/building-your-application/deploying) para mais detalhes.
+Para dúvidas ou suporte, entre em contato através do sistema.
 
 ---
 
-_Template otimizado para uso com Lasy AI - builds consistentes e deploys sem problemas!_
+**Desenvolvido com ❤️ para neuropsicopedagogos**
